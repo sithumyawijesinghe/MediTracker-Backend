@@ -1,0 +1,180 @@
+{
+  "info": {
+    "name": "MediTracker Backend",
+    "description": "Complete API test suite for MediTracker (Patient, Medicine, Log endpoints)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "2. Create Patient",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"age\": 45,\n  \"gender\": \"Male\",\n  \"diseases\": \"Diabetes, Hypertension\",\n  \"otherDisease\": \"None\",\n  \"currentMeds\": \"Metformin, Lisinopril\",\n  \"notes\": \"Allergic to Penicillin\",\n  \"updatedAt\": 1713427200000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/patients/upsert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "patients", "upsert"]
+        }
+      }
+    },
+    {
+      "name": "3. Get All Patients",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/patients",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "patients"]
+        }
+      }
+    },
+    {
+      "name": "4. Create Medicine",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Metformin\",\n  \"dosage\": \"500\",\n  \"unit\": \"mg\",\n  \"frequency\": \"Daily\",\n  \"startDate\": \"2024-04-01\",\n  \"endDate\": \"2024-12-31\",\n  \"updatedAt\": 1713427200000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/medicines/upsert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "medicines", "upsert"]
+        }
+      }
+    },
+    {
+      "name": "5. Get All Medicines",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/medicines",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "medicines"]
+        }
+      }
+    },
+    {
+      "name": "6. Create Log (Taken)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"medName\": \"Metformin\",\n  \"doseText\": \"500mg\",\n  \"timeText\": \"08:00 AM\",\n  \"dayLabel\": \"Today\",\n  \"status\": \"TAKEN\",\n  \"updatedAt\": 1713470400000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/logs/upsert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "logs", "upsert"]
+        }
+      }
+    },
+    {
+      "name": "7. Create Log (Missed)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"medName\": \"Lisinopril\",\n  \"doseText\": \"10mg\",\n  \"timeText\": \"06:00 PM\",\n  \"dayLabel\": \"Mon\",\n  \"status\": \"MISSED\",\n  \"updatedAt\": 1713384000000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/logs/upsert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "logs", "upsert"]
+        }
+      }
+    },
+    {
+      "name": "8. Get All Logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/logs",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "logs"]
+        }
+      }
+    },
+    {
+      "name": "9. Update Existing Patient (by serverId)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"serverId\": \"PASTE_ID_FROM_GET_RESPONSE_HERE\",\n  \"name\": \"John Doe Updated\",\n  \"age\": 46,\n  \"gender\": \"Male\",\n  \"diseases\": \"Diabetes, Hypertension, Asthma\",\n  \"otherDisease\": \"None\",\n  \"currentMeds\": \"Metformin, Lisinopril, Albuterol\",\n  \"notes\": \"Allergic to Penicillin. Added asthma.\",\n  \"updatedAt\": 1713513600000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/patients/upsert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "patients", "upsert"]
+        }
+      }
+    }
+  ]
+}
